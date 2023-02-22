@@ -27,7 +27,7 @@ defmodule Issues.CLI do
 
       # if they enter a github user, project, and count; it returns just that
       {_, [user, project, count], _} ->
-        {user, project, count}
+        {user, project, String.to_integer(count)}
 
       # without the count, the default count is set to the returned tuple
       {_, [user, project], _} ->
