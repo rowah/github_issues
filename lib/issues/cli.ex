@@ -24,11 +24,25 @@ defmodule Issues.CLI do
   #
   def process({user, project, _count}) do
     Issues.GithubIssues.fetch(user, project)
+    # decoding the response got
+    |> decode_response()
+  end
+
+  # no error response
+  def decode_response({:ok, body}), do: body
+
+  # incase of error
+  def decode_response({:error, error}) do
+    IO.puts("Error fetching data from Github: #{error["message"]}")
+
+    System.halt(2)
   end
 
   @doc """
   'argv' can be -h or --help, which returns :help.
   Otherwise it is a github username, project name, and an optional number of entries to format
+  OptionParser module allows definition and parsing of command-line options and conveniently handle arguments passed to a script
+  parse will be a tuple which will contain a list(argv), another list with help which will be a boolean
   """
 
   # def parse_args(argv) do
