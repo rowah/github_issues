@@ -39,6 +39,7 @@ defmodule Issues.CLI do
 
   def parse_args(argv) do
     OptionParser.parse(argv, switches: [help: :boolean], aliases: [h: :help])
+    # extracts a specific element from a collection. It takes two arguments: the collection to extract the element from and the index of the element to extract, one in this case.
     |> elem(1)
     |> args_to_internal_representation()
   end
