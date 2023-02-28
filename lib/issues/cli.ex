@@ -40,6 +40,8 @@ defmodule Issues.CLI do
   @doc """
   'argv' can be -h or --help, which returns :help.
   Otherwise it is a github username, project name, and an optional number of entries to format
+  OptionParser module allows definition and parsing of command-line options and conveniently handle arguments passed to a script
+  parse will be a tuple which will contain a list(argv), another list with help which will be a boolean
   """
 
   # def parse_args(argv) do
